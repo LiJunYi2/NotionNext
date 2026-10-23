@@ -67,27 +67,21 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { prefix }, locale, revalidateReason }) {
-  const rawProps = await resolvePostProps({
+  const props = await resolvePostProps({
     prefix,
     locale,
     revalidateReason,
   })
-
-  // 关键修复：防止 NotionNext 返回的字段（如 prev/next 等）为 undefined 导致 Next.js 序列化报错
-  // 通过此处的 JSON 转换，会自动把所有 undefined 替换为 null，保证构建安全通过
-  const props = JSON.parse(JSON.stringify(rawProps, (key, value) => {
-    return value === undefined ? null : value
-  }))
 
   return {
     props,
     revalidate: isStaticExport
       ? undefined
       : siteConfig(
-          'NEXT_REVALIDATE_SECOND',
-          BLOG.NEXT_REVALIDATE_SECOND,
-          props.NOTION_CONFIG
-        ),
+        'NEXT_REVALIDATE_SECOND',
+        BLOG.NEXT_REVALIDATE_SECOND,
+        props.NOTION_CONFIG
+      ),
     notFound: !props.post
   }
 }
