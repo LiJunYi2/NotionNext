@@ -37,8 +37,8 @@ const CONFIG = {
   HEO_HERO_TITLE_1: 'A嘉博客',
   HEO_HERO_TITLE_2: '分享技术',
   HEO_HERO_TITLE_3: 'AJiaJiShu.',
-  //HEO_HERO_TITLE_4: '开发笔记',
-  //HEO_HERO_TITLE_5: '个人开发笔记博客',
+  HEO_HERO_TITLE_4: '开发笔记',
+  HEO_HERO_TITLE_5: '个人开发笔记博客',
   HEO_HERO_TITLE_LINK: 'https://blog.bilivo.top/',
   // 英雄区遮罩文字
   HEO_HERO_COVER_TITLE: '随便瞧瞧',
